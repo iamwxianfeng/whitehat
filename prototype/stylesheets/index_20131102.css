@@ -93,7 +93,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);}
 
 .span3{float:left;width:30%;margin-right:30px;}
 .span3 h4{font-size:20px;color:#f6f6f6;font-weight:100;}
-.span3 p{font-size:14px;color:#999;}
+.span3 p{font-size:14px;color:#999;min-height:200px;}
 .footer_b{padding:20px 0; border-top:2px solid #656565;color:#999;}
 .footer_b p{margin-right:5%;}
 
@@ -129,44 +129,4 @@ filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);}
 .span12_e{width:28% !important;height:34px;float:left;margin-right:12px;color:#9099a3;}
 
 .span14{text-align:center;font-size:24px;padding:20px 0;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

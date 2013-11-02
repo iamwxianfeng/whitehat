@@ -1,4 +1,7 @@
 Whitehat::Application.routes.draw do
+
+  match "welcome/:action", :controller => "welcome"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

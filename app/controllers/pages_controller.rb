@@ -10,4 +10,7 @@ class PagesController < ApplicationController
   def buy
   end
 
+  def do
+  end
+
 end

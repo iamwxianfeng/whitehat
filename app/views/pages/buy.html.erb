@@ -12,7 +12,7 @@
       
     </div>
 
-    <form action="" class="span_form">
+    <form action="/pages/do" class="span_form" method="POST">
       <div class="row" style="margin-top:0;">
         <section class="span11 fix">
           <div class="span12">
@@ -30,7 +30,7 @@
               <input type="email" name="email" placeholder="Email Address">
               <input class="span12_c" type="text" name="Phone" placeholder="Phone">
               <input class="span12_c" type="text" name="Company" placeholder="Company">
-              <input class="span12_c" type="text" name="Post" placeholder="Post">
+              <input class="span12_c" type="text" name="Position" placeholder="Position">
               <input class="span12_c" type="text" name="Website" placeholder="Website">
               <input type="text" name="Leave a message" placeholder="Leave a message">
             </div>
@@ -67,11 +67,11 @@
                 <option value="">2012</option>
               </select>
               <input class="span12_d" type="text" name="CVV Code" placeholder="CVV Code">
-              <input type="text" name="Billimg Address" placeholder="Billimg Address">
+              <input type="text" name="Billing Address" placeholder="Billimg Address">
               <input type="text" name="City" placeholder="City">
               <input type="text" name="State" placeholder="State">
               <input type="text" name="Zip Code" placeholder="Zip Code">
-              <a class="btn btn_large btn_primary" href="">Buy</a>
+              <a class="btn btn_large btn_primary" href="javascript:;" id="buy">Buy</a>
             </div>
           </div>
           
@@ -83,3 +83,12 @@
 
   <div class="blank30"></div>
 
+  <script type="text/javascript">
+
+  $(function(){
+    $("#buy").click(function(){
+      $("form").submit();
+    })
+  });
+
+  </script>

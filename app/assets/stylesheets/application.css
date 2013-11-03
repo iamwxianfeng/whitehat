@@ -3,3 +3,7 @@
  *= require basic
  *= require index
 */
+
+.error {
+  color: #E84D54;
+}

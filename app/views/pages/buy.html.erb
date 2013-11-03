@@ -12,82 +12,108 @@
       
     </div>
 
-    <form action="/pages/do" class="span_form" method="POST">
-      <div class="row" style="margin-top:0;">
-        <section class="span11 fix">
-          <div class="span12">
-            <div class="span12_a">
-              <h3>Basic Information</h3>
-              <p>content content content content content content content content content content content content </p>
-              <p>content content content content content content content content content content content content </p>
+    <div id="content">
+      <form action="/pages/do" class="span_form" method="POST">
+        <div class="row" style="margin-top:0;">
+          <section class="span11 fix">
+            <div class="span12">
+              <div class="span12_a">
+                <h3>Basic Information</h3>
+                <p>content content content content content content content content content content content content </p>
+                <p>content content content content content content content content content content content content </p>
+              </div>
             </div>
-          </div>
 
-          <div class="span12">
-            <div class="span12_b">
-              <input type="text" name="fname" placeholder="First Name">
-              <input type="text" name="lname" placeholder="Last Name">
-              <input type="email" name="email" placeholder="Email Address">
-              <input class="span12_c" type="text" name="Phone" placeholder="Phone">
-              <input class="span12_c" type="text" name="Company" placeholder="Company">
-              <input class="span12_c" type="text" name="Position" placeholder="Position">
-              <input class="span12_c" type="text" name="Website" placeholder="Website">
-              <input type="text" name="Leave a message" placeholder="Leave a message">
+            <div class="span12">
+              <div class="span12_b">
+                <input type="text" name="fname" placeholder="First Name">
+                <input type="text" name="lname" placeholder="Last Name">
+                <input type="email" name="email" placeholder="Email Address">
+                <input class="span12_c" type="text" name="phone" placeholder="Phone">
+                <input class="span12_c" type="text" name="company" placeholder="Company">
+                <input class="span12_c" type="text" name="position" placeholder="Position">
+                <input class="span12_c" type="text" name="website" placeholder="Website">
+                <input type="text" name="message" placeholder="Leave a message">
+              </div>
             </div>
-          </div>
-          
-        </section>
-      </div>
+
+          </section>
+        </div>
 
 
-      <div class="row" style="margin-top:0;">
-        <section class="span11 fix">
-          <div class="span12">
-            <div class="span12_a">
-              <h3>Billing Information</h3>
-              <p>content content content content content content content content content content content content </p>
-              <p>content content content content content content content content content content content content </p>
+        <div class="row" style="margin-top:0;">
+          <section class="span11 fix">
+            <div class="span12">
+              <div class="span12_a">
+                <h3>Billing Information</h3>
+                <p>content content content content content content content content content content content content </p>
+                <p>content content content content content content content content content content content content </p>
+              </div>
             </div>
-          </div>
 
-          <div class="span12">
-            <div class="span12_b">
-              <input type="text" name="Name on card" placeholder="Name on card">
-              <input type="text" name="Card Number" placeholder="Card Number">
-              <select class="span12_e" name="" id="">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-              </select>
-              <select class="span12_e" name="" id="">
-                <option value="">2015</option>
-                <option value="">2014</option>
-                <option value="">2013</option>
-                <option value="">2012</option>
-              </select>
-              <input class="span12_d" type="text" name="CVV Code" placeholder="CVV Code">
-              <input type="text" name="Billing Address" placeholder="Billimg Address">
-              <input type="text" name="City" placeholder="City">
-              <input type="text" name="State" placeholder="State">
-              <input type="text" name="Zip Code" placeholder="Zip Code">
-              <a class="btn btn_large btn_primary" href="javascript:;" id="buy">Buy</a>
+            <div class="span12">
+              <div class="span12_b">
+                <input type="text" name="card_name" placeholder="Name on card">
+                <input type="text" name="card_number" placeholder="Card Number">
+                <select class="span12_e" name="month" id="">
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option>
+                </select>
+                <select class="span12_e" name="year" id="">
+                  <option value="">2015</option>
+                  <option value="">2014</option>
+                  <option value="">2013</option>
+                  <option value="">2012</option>
+                </select>
+                <input class="span12_d" type="text" name="cvv" placeholder="CVV Code">
+                <input type="text" name="address" placeholder="Billimg Address">
+                <input type="text" name="city" placeholder="City">
+                <input type="text" name="state" placeholder="State">
+                <input type="text" name="zip_code" placeholder="Zip Code">
+                <a class="btn btn_large btn_primary" href="javascript:;" id="buy">Buy</a>
+                <span class='error' id="card_error"></span>
+              </div>
             </div>
-          </div>
-          
-        </section>
-      </div>
-    </form>
+
+          </section>
+        </div>
+      </form>
+    </div>
 
   </div>
 
   <div class="blank30"></div>
 
+
   <script type="text/javascript">
+
+  var ok_html = '<div class="row" style="margin-top:0;">' +
+  '<div class="span14">' +
+  '<img src="/assets/sure.png" alt="">' +
+  'Congratulations, your payment information has been confirmed!' +
+  '</div>' +
+  '</div>';
 
   $(function(){
     $("#buy").click(function(){
-      $("form").submit();
+      var $card_error = $("#card_error");
+      var $content = $("#content");
+      var _data = $( "form" ).serialize();
+      $.ajax({
+        url: '/pages/do',
+        type: "POST",
+        data: _data,
+        success: function(ret){
+          if (ret.code){
+            $content.html(ok_html);
+          }else{
+            $card_error.text(ret.error);
+          }
+        }
+      });
+      // $("form").submit();
     })
   });
 

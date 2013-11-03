@@ -1,4 +1,10 @@
 # coding:utf-8
+# some useful API refs
+# https://dashboard.pin.net.au/account
+# https://pin.net.au/docs/api#endpoints
+# https://github.com/dNitza/pin_up
+# https://pin.net.au/docs/languages/ruby
+# https://pin.net.au/docs/api/charges
 class PagesController < ApplicationController
 
   def index

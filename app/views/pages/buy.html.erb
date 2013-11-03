@@ -68,7 +68,7 @@
                   <option value="">2012</option>
                 </select>
                 <input class="span12_d" type="text" name="cvv" placeholder="CVV Code">
-                <input type="text" name="address" placeholder="Billimg Address">
+                <input type="text" name="address" placeholder="Billing Address">
                 <input type="text" name="city" placeholder="City">
                 <input type="text" name="state" placeholder="State">
                 <input type="text" name="zip_code" placeholder="Zip Code">
@@ -99,6 +99,61 @@
   $(function(){
     $("#buy").click(function(){
       var $card_error = $("#card_error");
+      if ($("input[name='fname']").val()==""){
+        $("input[name='fname']").addClass("red_border");
+        $card_error.text("first name cant blank");
+        return;
+      }
+      if ($("input[name='lname']").val() == ""){
+        $("input[name='lname']").addClass('red_border');
+        $card_error.text("last name cant blank");
+        return;
+      }
+      if ($("input[name='email']").val() == ""){
+        $("input[name='email']").addClass('red_border');
+        $card_error.text("email cant blank");
+        return;
+      }
+      if ($("input[name='phone']").val() == ""){
+        $("input[name='phone']").addClass('red_border');
+        $card_error.text("phone cant blank");
+        return;
+      }
+      if ($("input[name='card_name']").val() == ""){
+        $("input[name='card_name']").addClass('red_border');
+        $card_error.text("name on card cant blank");
+        return;
+      }
+      if ($("input[name='card_number']").val() == ""){
+        $("input[name='card_number']").addClass('red_border');
+        $card_error.text("card number cant blank");
+        return;
+      }
+      if ($("input[name='cvv']").val() == ""){
+        $("input[name='cvv']").addClass('red_border');
+        $card_error.text("cvv code cant blank");
+        return;
+      }
+      if ($("input[name='address']").val() == ""){
+        $("input[name='address']").addClass('red_border');
+        $card_error.text("billing address cant blank");
+        return;
+      }
+      if ($("input[name='city']").val() == ""){
+        $("input[name='city']").addClass('red_border');
+        $card_error.text("city cant blank");
+        return;
+      }
+      if ($("input[name='state']").val() == ""){
+        $("input[name='state']").addClass('red_border');
+        $card_error.text("state cant blank");
+        return;
+      }
+      if ($("input[name='zip_code']").val() == ""){
+        $("input[name='zip_code']").addClass('red_border');
+        $card_error.text("zip code cant blank");
+        return;
+      }
       var $content = $("#content");
       var _data = $( "form" ).serialize();
       $.ajax({
@@ -113,8 +168,7 @@
           }
         }
       });
-      // $("form").submit();
     })
-  });
+});
 
   </script>

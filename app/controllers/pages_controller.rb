@@ -16,6 +16,12 @@ class PagesController < ApplicationController
   def buy
   end
 
+  def about
+  end
+
+  def contact
+  end
+
   # Parameters: {"fname"=>"", "lname"=>"", "email"=>"", "phone"=>"", "company"=>"", "position"=>"", "website"=>"", "message"=>"", 
   # "card_name"=>"", "card_number"=>"", "month"=>"", "year"=>"", "cvv"=>"", "address"=>"", "city"=>"", "state"=>"", "zip_code"=>""}
   def do

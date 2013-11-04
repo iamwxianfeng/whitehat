@@ -50,6 +50,17 @@ module Whitehat
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
 
+    mail_settings = YAML.load(File.read("#{Rails.root}/config/mail.yml"))
+    begin
+      config.action_mailer.perform_deliveries = true
+      config.action_mailer.raise_delivery_errors = true
+      config.action_mailer.delivery_method = mail_settings['method']
+      config.action_mailer.smtp_settings = mail_settings['settings']
+    rescue
+      # Fall back to using sendmail by default
+      ActionMailer::Base.delivery_method = :sendmail
+    end
+
     # Enforce whitelist mode for mass assignment.
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
@@ -61,5 +72,5 @@ module Whitehat
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-end
+  end
 end

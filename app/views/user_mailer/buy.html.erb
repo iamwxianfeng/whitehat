@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+  .a{width:600px;height: 550px;margin:30px 100px;padding:25px 50px;background:#fff;border:1px solid #cfcfcf;
+    -moz-box-shadow:2px 2px 5px #333;-webkit-box-shadow:2px 2px 5px #333; box-shadow:2px 2px 5px #333;}
+    p{margin:8px 0;}
+    span{color:#999;}
+    .c,.d{font-weight:bold;margin:20px 0;}
+    .c{color:#666;}
+    </style>
+  </head>
+  <body>
+    <div class="a">
+      <div> Plan: <%= @options['plan'] %> </div>
+      <div class="content">
+        <p class="d">
+          User Info: <br/>
+          first name: <%= @options['fname'] %> <br/>
+          last name: <%= @options['lname'] %> <br/>
+          email: <%= @options['email'] %> <br/>
+          phone: <%= @options['phone'] %> <br/>
+          company: <%= @options['company'] %> <br/>
+          position: <%= @options['position'] %> <br/>
+          website: <%= @options['website'] %> <br/>
+          message: <%= @options['message'] %>
+        </p>
+        <p class="d">
+          Billing Info: <br/>
+          name on card: <%= @options['card_name']  %> <br/>
+          card number: <%= @options['card_number'] %> <br/>
+          month: <%= @options['month'] %> <br/>
+          year: <%= @options['year'] %> <br/>
+          cvv: <%= @options['cvv'] %> <br/>
+          address: <%= @options['address'] %> <br/>
+          city: <%= @options['city'] %> <br/>
+          state: <%= @options['state'] %> <br/>
+          zip code: <%= @options['zip_code'] %>
+        </p>
+        <p class="c">whitehat.com</p>
+      </div>
+    </div>
+  </body>
+  </html>

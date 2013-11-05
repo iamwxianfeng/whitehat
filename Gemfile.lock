@@ -95,7 +95,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  pin_up
+  pin_up (= 0.5.0)
   rails (= 3.2.2)
-  therubyracer
-  uglifier (>= 1.0.3)
+  therubyracer (= 0.10.1)
+  uglifier (= 2.3.0)

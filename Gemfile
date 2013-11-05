@@ -15,16 +15,16 @@ group :assets do
   # gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer'
+  gem 'therubyracer', '0.10.1'
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '2.3.0'
 end
 
 # gem 'jquery-rails'
 
 # gem 'pin_payment', '0.2.0'
 # gem 'pin_payment', path: "/data/projects/pin_payment"
-gem 'pin_up'
+gem 'pin_up', '0.5.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

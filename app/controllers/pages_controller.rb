@@ -56,7 +56,10 @@ class PagesController < ApplicationController
     charge = Pin::Charges.create(charge_details)
     Rails.logger.debug "debug charge #{charge.inspect}"
     if charge['success']
-      UserMailer.buy(params).deliver!
+      begin
+        UserMailer.buy(params).deliver!
+      rescue
+      end
       render :json => { code: 1 }
     else
       render :json => { code: 0, error: 'card charge error' }

@@ -14,6 +14,16 @@ class PagesController < ApplicationController
   end
 
   def buy
+    type = params[:type]
+    @price = if type == 'a'
+      'free'
+    elsif type == 'b'
+      '99.95'
+    elsif type == 'c'
+      '149.95'
+    elsif type == 'd'
+      '209.95'
+    end
   end
 
   def about

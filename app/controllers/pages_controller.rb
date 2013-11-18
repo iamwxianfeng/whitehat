@@ -7,6 +7,8 @@
 # https://pin.net.au/docs/api/charges
 class PagesController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token, :only => [:send_message, :do]
+
   def index
   end
 
@@ -30,6 +32,24 @@ class PagesController < ApplicationController
   end
 
   def contact
+  end
+
+  def send_message
+    options = {
+      "firstname" => params[:firstname],
+      "lastname" => params[:lastname],
+      "email" => params[:email],
+      "subject" => params[:subject],
+      "message" => params[:message]
+    }
+    begin
+      UserMailer.send_message(options).deliver!
+    rescue Exception => e
+      Rails.logger.info %Q(#{e.message})
+      Rails.logger.info %Q(#{e.backtrace.join("\n")})
+      render :json => { code: 0, error: 'exception' } and return
+    end
+    render :json => { code: 1 }
   end
 
   # Parameters: {"fname"=>"", "lname"=>"", "email"=>"", "phone"=>"", "company"=>"", "position"=>"", "website"=>"", "message"=>"", 

@@ -31,8 +31,9 @@
         <input type="text" name="lname" placeholder="Last Name">
         <input type="email" name="email" placeholder="Email Address">
         <input type="text" name="Subject " placeholder="Subject ">
-        <textarea rows="9" class="input-block-level" placeholder="Your message"></textarea>
-        <a class="btn btn_large btn_info" href="">Send message</a>
+        <textarea rows="9" class="input-block-level" name="message" placeholder="Your message"></textarea>
+        <a class="btn btn_large btn_info" href="javascript:;" id="sendMessage">Send message</a>
+        <span id='result'  class="error">&nbsp;</span>
       </div>
     </div>
 
@@ -40,3 +41,41 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+(function(){
+  $("#sendMessage").bind('click',function(){
+    var firstname = $("input[name='fname']").val();
+    var lastname = $("input[name='lname']").val();
+    var email = $("input[name='email']").val();
+    if (email == ""){
+      $("input[name='email']").addClass("red_border");
+      return;
+    }
+    var subject = $("input[name='subject']").val();
+    var message = $("textarea[name='message']").val();
+    if (message == ""){
+      $("textarea[name='message']").addClass("red_border");
+      return;
+    }
+    $.ajax({
+      url: "/pages/send_message",
+      type: "POST",
+      data: {
+        "firstname": firstname,
+        "lastname": lastname,
+        "email": email,
+        "subject": subject,
+        "message": message
+      },
+      success: function(ret){
+        if (ret.code){
+          $("#result").text("message have sent, thanks.");
+        }else{
+          $("#result").text(ret.error);
+        }
+      }
+    })
+  });
+})();
+</script>

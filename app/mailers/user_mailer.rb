@@ -9,4 +9,11 @@ class UserMailer < ActionMailer::Base
     mail(:to => _to ,:subject => _subject)
   end
 
+  def send_message(options={})
+    @options = options
+    _to = YAML.load(IO.read("#{Rails.root}/config/mail.yml"))['receiver']
+    _subject = "#{options['email']} send a message to u"
+    mail(:to => _to ,:subject => _subject)
+  end
+
 end
